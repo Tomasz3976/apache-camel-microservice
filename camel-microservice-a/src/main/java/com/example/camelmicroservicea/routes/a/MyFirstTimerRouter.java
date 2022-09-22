@@ -39,7 +39,7 @@ public class MyFirstTimerRouter extends RouteBuilder {
                 .log("${body}")
                 .bean(loggingComponent)
                 .log("${body}")
-                .process(new SimpleLoggingProcessing())
+                .process(new SimpleLoggingProcessor())
                 .to("log:first-timer");     // database
     }
 }
@@ -60,10 +60,12 @@ class SimpleLoggingProcessingComponent {
     }
 }
 
-class SimpleLoggingProcessing implements Processor {
+class SimpleLoggingProcessor implements Processor {
+    private Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessingComponent.class);
+
     @Override
     public void process(Exchange exchange) throws Exception {
-
+        logger.info("SimpleLoggingProcessor {}", exchange.getMessage().getBody());
     }
 }
 
