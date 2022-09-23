@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Component
 public class MyFirstTimerRouter extends RouteBuilder {
     private final GetCurrentTimeBean getCurrentTimeBean;
-    private SimpleLoggingProcessingComponent loggingComponent;
+    private final SimpleLoggingProcessingComponent loggingComponent;
 
     public MyFirstTimerRouter(GetCurrentTimeBean getCurrentTimeBean, SimpleLoggingProcessingComponent loggingComponent) {
         this.getCurrentTimeBean = getCurrentTimeBean;
@@ -53,7 +53,7 @@ class GetCurrentTimeBean {
 
 @Component
 class SimpleLoggingProcessingComponent {
-    private Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessingComponent.class);
+    private final Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessingComponent.class);
 
     public void process(String message) {
         logger.info("SimpleLoggingProcessingComponent {}", message);
@@ -61,7 +61,7 @@ class SimpleLoggingProcessingComponent {
 }
 
 class SimpleLoggingProcessor implements Processor {
-    private Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessingComponent.class);
+    private final Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessingComponent.class);
 
     @Override
     public void process(Exchange exchange) throws Exception {

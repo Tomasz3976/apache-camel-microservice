@@ -1,4 +1,4 @@
-package com.example.camelmicroserviceb.routes.b;
+package com.example.camelmicroservicea.routes.b;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
